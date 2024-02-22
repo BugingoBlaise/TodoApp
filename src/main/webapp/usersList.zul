@@ -1,0 +1,32 @@
+<zk xml:space="default">
+    <window border="normal" vflex="1" style="margin:auto"
+            apply="org.zkoss.bind.BindComposer"
+            viewModel="@id('vm')@init('org.blaiseSolutions.MyViewModel')"
+
+            validationMessages="@id('vmsgs')"
+    >
+        <caption label="Users Panel" iconSclass="z-icon-list-alt"/>
+        <hlayout hflex="1">
+        </hlayout>
+        <listbox model="@load(vm.usersList)"
+                 emptyMessage="No users found" vflex="1">
+            <template name="model">
+                <listitem>
+                    <listcell>
+                        <checkbox/>
+                    </listcell>
+                    <listcell>
+                        <label value="@init(each.username)"/>
+                    </listcell>
+                    <listcell style="display:flex">
+                        <button iconSclass="z-icon-info"
+                                onClick="@command('navigateToUserDetails', selectedUser=each)"/>
+                    </listcell>
+                </listitem>
+            </template>
+        </listbox>
+        <a iconSclass="z-icon-home" width="120px" style="text-decoration:none" href="/index.zul"/>
+        <a  iconSclass="z-icon-forward" width="120px" style="text-decoration:none" href="/userDetails.zul"/>
+    </window>
+
+</zk>

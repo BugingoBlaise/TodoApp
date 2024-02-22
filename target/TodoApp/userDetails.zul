@@ -1,0 +1,39 @@
+<zk xml:space="default">
+    <window border="normal" vflex="1" style="margin:auto"
+            apply="org.zkoss.bind.BindComposer"
+            viewModel="@id('vm')@init('org.blaiseSolutions.MyViewModel')"
+            validationMessages="@id('vmsgs')">
+
+
+        <caption label="User Details"/>
+        <label value="@load(param.selectedUser.username)" />
+
+    <hlayout hflex="1">
+<!--        <label value="@load(vm.selectedUser.username)"/>-->
+        <button height="37px" href="/index.zul" iconSclass="z-icon-home"/>
+        <button height="37px" iconSclass="z-icon-plus-square"/>
+    </hlayout>
+    <listbox>
+        <listitem>
+            <listcell>
+                <checkbox/>
+            </listcell>
+            <listcell>
+                <label value="Calculator App"/>
+            </listcell>
+            <listcell style="display:flex">
+                <button iconSclass="z-icon-times"/>
+                <button iconSclass="z-icon-play"/>
+            </listcell>
+        </listitem>
+    </listbox>
+
+            Type:
+            <selectbox id="typesSelectbox" model="${win$composer.typesModel}" >
+                <template name="model">
+                    <label value="${each}" />
+                </template>
+            </selectbox>
+
+</window>
+</zk>

@@ -1,0 +1,8 @@
+org\blaiseSolutions\dao\UsersDao.class
+org\blaiseSolutions\MyViewModel.class
+org\blaiseSolutions\model\enums\ETaskStatus.class
+org\blaiseSolutions\model\Tasks.class
+org\blaiseSolutions\dao\HibernateUtil.class
+org\blaiseSolutions\dao\TasksDao.class
+org\blaiseSolutions\model\User.class
+org\blaiseSolutions\model\enums\EUserRole.class

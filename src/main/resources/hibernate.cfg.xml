@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        <property name="connection.url">jdbc:postgresql://localhost:5432/internship</property>
+        <property name="hibernate.connection.username">postgres</property>
+        <property name="hibernate.connection.password">open123</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+        <mapping class="org.blaiseSolutions.model.User" />
+        <mapping class="org.blaiseSolutions.model.Tasks" />
+    </session-factory>
+</hibernate-configuration>
