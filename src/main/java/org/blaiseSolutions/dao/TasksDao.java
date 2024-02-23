@@ -2,7 +2,6 @@ package org.blaiseSolutions.dao;
 
 import lombok.extern.slf4j.Slf4j;
 import org.blaiseSolutions.model.Tasks;
-import org.blaiseSolutions.model.User;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
@@ -66,11 +65,15 @@ public class TasksDao {
         }
         return null;
     }
-    public List<String> findTaskDescriptionsByUser(User user) {
+    public List<String> findTaskDescriptionsByUser(String username) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            String hql = "SELECT t.description FROM Tasks t JOIN t.usersList u WHERE u = :user";
+            String hql = "SELECT task.description FROM Tasks task WHERE task.assignedTo = :user";
             Query<String> query = session.createQuery(hql, String.class);
-            query.setParameter("user", user);
+            query.setParameter("user", username);
+            System.out.println("okk");
+            System.out.println("----------");
+            System.out.println(query);
+
             return query.getResultList();
         } catch (Exception e) {
             e.printStackTrace();

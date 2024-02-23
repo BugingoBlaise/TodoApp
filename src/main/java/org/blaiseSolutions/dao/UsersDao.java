@@ -3,6 +3,7 @@ package org.blaiseSolutions.dao;
 import org.blaiseSolutions.model.User;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
+import org.springframework.scheduling.config.Task;
 
 import java.util.List;
 
@@ -70,15 +71,17 @@ public class UsersDao {
         return null;
     }
 
-    public List<String> findTaskDescriptionByUser(String user) {
+   /* public List<Task> findTaskDescriptionByUser(Task task) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            String hql = "SELECT u.assignedTasks FROM User  u WHERE u = :user";
-            Query<String> query = session.createQuery(hql, String.class);
-            query.setParameter("user", user);
+            String hql = "SELECT u.assignedTasks FROM User u WHERE u.username = :user";
+            Query<Task> query = session.createQuery(hql, Task.class);
+            query.setParameter("user",);
             return query.getResultList();
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
+
+    */
 }

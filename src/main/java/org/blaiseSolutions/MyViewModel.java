@@ -8,6 +8,7 @@ import org.blaiseSolutions.model.Tasks;
 import org.blaiseSolutions.model.User;
 import org.blaiseSolutions.model.enums.ETaskStatus;
 import org.blaiseSolutions.model.enums.EUserRole;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Component;
 import org.zkoss.bind.annotation.*;
 import org.zkoss.zk.ui.Executions;
@@ -30,22 +31,25 @@ public class MyViewModel {
     private List<Tasks> tasksList = new ArrayList<>();
     private List<String> filteredTasks = new ArrayList<>();
     private List<User> usersList = new ArrayList<>();
-    
+
     @Init
     public void init() {
         listTasks();
         listUsers();
         setFilteredTasks();
     }
+
     @Command
-    @NotifyChange({"tasksList"})
+    @NotifyChange({"tasksList","filteredTasks"})
     public void saveSelectedTask() {
         Session session = Sessions.getCurrent();
         User userInSession = (User) session.getAttribute("selectedUser");
 
         if (selectedTask != null && userInSession != null) {
-            selectedTask.setAssignedTo(String.valueOf(userInSession));
+
+            selectedTask.setAssignedTo(String.valueOf(userInSession.getUsername()));
             selectedTask.setStatus(ETaskStatus.PENDING);
+
             TasksDao dao = new TasksDao();
             dao.updateTask(selectedTask);
 
@@ -53,6 +57,7 @@ public class MyViewModel {
             setFilteredTasks();
         }
     }
+
     @Command
     @NotifyChange({"tasksList"})
     public void deleteForm() {
@@ -62,6 +67,7 @@ public class MyViewModel {
             listTasks();
         }
     }
+
     @Command
     @NotifyChange({"description", "tasksList"})
     public void addTask() {
@@ -93,7 +99,6 @@ public class MyViewModel {
             // Set selectedUser in the ViewModel
             Session session = Sessions.getCurrent();
             session.setAttribute("selectedUser", selectedUser);
-            setSelectedUser(selectedUser);
             // Redirect to UserDetails page
             Executions.sendRedirect("userDetails.zul");
         }
@@ -114,16 +119,26 @@ public class MyViewModel {
     public void setFilteredTasks() {
 
         Session session = Sessions.getCurrent();
+
         User userInSession = (User) session.getAttribute("selectedUser");
-            this.selectedUser=userInSession;
-        if (userInSession != null ) {
+
+
+        if (userInSession != null) {
+
             System.out.println("user founddddd");
-            UsersDao usersDao = new UsersDao();
-            filteredTasks = usersDao.findTaskDescriptionByUser(userInSession.getUsername());
+
+            TasksDao tasksDao = new TasksDao();
+
+            filteredTasks = tasksDao.findTaskDescriptionsByUser(userInSession.getUsername());
+            System.out.println(filteredTasks);
+
         } else {
             System.out.println("====================");
             System.out.println("Select User under Filter List Task is Null !!!");
             System.out.println("======================");
         }
+
     }
+
+
 }

@@ -14,6 +14,10 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+//@NamedQueries({
+//        @NamedQuery(name = "Tasks.searchTasks", query = "select t from Tasks t where t.assignedTo like :kw"),
+//        @NamedQuery(name = "Person.searchPersonInPage", query = "select p from Person p where lower(p.username) like lower(concat('%',:kw,'%'))")
+//})
 public class Tasks {
     @Id
     @GeneratedValue

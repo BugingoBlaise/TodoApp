@@ -4,31 +4,6 @@
             viewModel="@id('vm')@init('org.blaiseSolutions.MyViewModel')"
             validationMessages="@id('vmsgs')">
 
-<!--        <caption label="${sessionScope.selectedUser.username}'s Panel"/>-->
-<!--        <div>-->
-<!--            <button height="37px" href="/index.zul" iconSclass="z-icon-home"/>-->
-<!--            <button height="37px" href="/usersList.zul" iconSclass="z-icon-backward"/>-->
-<!--        </div>-->
-<!--                 <label value="Add Task"/>-->
-<!--        <combobox model="@load(vm.tasksList)" autodrop="true" selectedItem="@bind(vm.selectedTask)">-->
-<!--            <template name="model">-->
-<!--                <comboitem label="${each.description}" />-->
-<!--            </template>-->
-<!--        </combobox>-->
-
-<!--        <button label="Save Task"  iconSclass="z-icon-plus-square" onClick="@command('saveSelectedTask')" />-->
-<!--        <listbox model="@load(vm.filteredTasks)" emptyMessage="No tasks found in the result" >-->
-<!--            <template name="model">-->
-<!--                <listitem>-->
-<!--                    <listcell>-->
-<!--                        <label value="@init(each.assignedTo)"/>-->
-<!--                    </listcell>-->
-<!--                </listitem>-->
-<!--            </template>-->
-<!--        </listbox>-->
-<!--    </window>-->
-
-
         <caption label="${sessionScope.selectedUser.username}'s Panel"/>
 
         <div>
@@ -45,7 +20,7 @@
 
         <button label="Save Task"  iconSclass="z-icon-plus-square" onClick="@command('saveSelectedTask')" />
 
-        <listbox model="@load(vm.selectedUser.assignedTasks)" emptyMessage="No tasks found in the result" >
+        <listbox model="@load(vm.filteredTasks)" emptyMessage="No tasks found in the result" >
             <template name="model">
                 <listitem>
                     <listcell>
