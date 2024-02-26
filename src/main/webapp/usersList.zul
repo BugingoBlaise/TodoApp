@@ -1,5 +1,5 @@
 <zk xml:space="default">
-    <window border="normal" vflex="1" style="margin:auto"
+    <groupbox border="normal" vflex="1" style="margin:auto"
             apply="org.zkoss.bind.BindComposer"
             viewModel="@id('vm')@init('org.blaiseSolutions.MyViewModel')"
 
@@ -27,6 +27,6 @@
         </listbox>
         <a iconSclass="z-icon-home" width="120px" style="text-decoration:none" href="/index.zul"/>
         <a  iconSclass="z-icon-forward" width="120px" style="text-decoration:none" href="/userDetails.zul"/>
-    </window>
+    </groupbox>
 
 </zk>

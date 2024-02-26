@@ -1,37 +1,41 @@
 <zk xml:space="default">
-    <window border="normal" vflex="1" style="margin:auto"
+    <groupbox border="normal" vflex="1" style="margin:auto"
             apply="org.zkoss.bind.BindComposer"
             viewModel="@id('vm')@init('org.blaiseSolutions.MyViewModel')"
             validationMessages="@id('vmsgs')"
     >
-
-        <caption label="Admin Panel" iconSclass="z-icon-list-alt"/>
-        <hlayout hflex="1">
-
-<!--            text input-->
-            <textbox value="@bind(vm.description)" hflex="1" placeholder="what needs to be done"/>
+        <include src="sidebar.zul"/>
 
 
-<!--        adding tasks command button    -->
-            <button onClick="@command('addTask')" height="37px" iconSclass="z-icon-plus-square"/>
+            <caption label="Admin Panel" iconSclass="z-icon-list-alt"/>
+            <hlayout hflex="1">
 
-        </hlayout>
-        <hlayout>
-            <textbox value="@bind(vm.username)" hflex="1" placeholder="add user"/>
-            <button onClick="@command('addUser')" height="37px" iconSclass="z-icon-plus-square"/>
-        </hlayout>
-        <listbox model="@load(vm.tasksList)"
-                 selectedItem="@save(vm.selectedTask)"
-                 emptyMessage="No tasks found in the result" rows="5">
-            <template name="model">
-                <listitem>
-                    <listcell label="@init(each.description)"/>
-                </listitem>
-            </template>
-        </listbox>
-        <div>
-            <button label="Delete" onClick="@command('deleteForm')" />
-        </div>
-                <a label="Users lists" style="text-decoration:none" iconSclass="z-icon-user" href="/usersList.zul"/>
-     </window>
+                <!--            text input-->
+                <textbox value="@bind(vm.description)" hflex="1" placeholder="what needs to be done"/>
+
+
+                <!--        adding tasks command button    -->
+                <button onClick="@command('addTask')" height="37px" iconSclass="z-icon-plus-square"/>
+
+            </hlayout>
+            <hlayout>
+                <textbox value="@bind(vm.username)" hflex="1" placeholder="add user"/>
+                <button onClick="@command('addUser')" height="37px" iconSclass="z-icon-plus-square"/>
+            </hlayout>
+            <listbox model="@load(vm.tasksList)"
+                     selectedItem="@save(vm.selectedTask)"
+                     emptyMessage="No tasks found in the result" rows="5">
+                <template name="model">
+                    <listitem>
+                        <listcell label="@init(each.description)"/>
+                    </listitem>
+                </template>
+            </listbox>
+            <div>
+                <button label="Delete" onClick="@command('deleteForm')"/>
+            </div>
+            <a label="Users lists" style="text-decoration:none" iconSclass="z-icon-user" href="/usersList.zul"/>
+
+
+    </groupbox>
 </zk>

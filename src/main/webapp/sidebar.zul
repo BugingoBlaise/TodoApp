@@ -1,0 +1,22 @@
+<!--<zk>-->
+<!--    <style src="/style.css" />-->
+<!--    <div id="sidebar">-->
+<!--        <button label="Home" />-->
+<!--        <button label="Profile" />-->
+<!--        <button label="Settings" />-->
+<!--    </div>-->
+<!--</zk>-->
+<zk>
+    <style src="/style.css"/>
+    <groupbox apply="org.zkoss.bind.BindComposer"
+              viewModel="@id('vm')@init('org.blaiseSolutions.MyViewModel')"
+              validationMessages="@id('vmsgs')">
+
+        <div id="sidebar">-->
+            <button label="Home"/>
+            <button label="Profile"/>
+            <button label="Settings"/>
+        </div>
+
+    </groupbox>
+</zk>

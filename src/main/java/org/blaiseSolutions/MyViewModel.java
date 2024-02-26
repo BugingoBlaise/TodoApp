@@ -49,7 +49,7 @@ public class MyViewModel {
 
             selectedTask.setAssignedTo(String.valueOf(userInSession.getUsername()));
             selectedTask.setStatus(ETaskStatus.PENDING);
-
+ 
             TasksDao dao = new TasksDao();
             dao.updateTask(selectedTask);
 
