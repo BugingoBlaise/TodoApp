@@ -1,10 +1,10 @@
 <zk xml:space="default">
-    <groupbox border="normal" vflex="1" style="margin:auto"
+    <groupbox  vflex="1" style="margin:auto"
             apply="org.zkoss.bind.BindComposer"
             viewModel="@id('vm')@init('org.blaiseSolutions.MyViewModel')"
             validationMessages="@id('vmsgs')"
     >
-        <include src="sidebar.zul"/>
+<!--        <include src="sidebar.zul"/>-->
 
 
             <caption label="Admin Panel" iconSclass="z-icon-list-alt"/>
