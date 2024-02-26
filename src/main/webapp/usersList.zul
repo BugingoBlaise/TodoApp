@@ -1,32 +1,71 @@
-<zk xml:space="default">
-    <groupbox vflex="1" style="margin:auto"
-            apply="org.zkoss.bind.BindComposer"
-            viewModel="@id('vm')@init('org.blaiseSolutions.MyViewModel')"
+<?link rel="stylesheet" type="text/css" href="/style.css"?>
+<zk>
+    <style>
+        * {
+        display: flex;
+        flex-direction: row;
+        }
 
-            validationMessages="@id('vmsgs')"
-    >
-        <caption label="Users Panel" iconSclass="z-icon-list-alt"/>
-        <hlayout hflex="1">
-        </hlayout>
-        <listbox model="@load(vm.usersList)"
-                 emptyMessage="No users found" vflex="1">
-            <template name="model">
-                <listitem>
-                    <listcell>
-                        <checkbox/>
-                    </listcell>
-                    <listcell>
-                        <label value="@init(each.username)"/>
-                    </listcell>
-                    <listcell style="display:flex">
-                        <button iconSclass="z-icon-info"
-                                onClick="@command('navigateToUserDetails', selectedUser=each)"/>
-                    </listcell>
-                </listitem>
-            </template>
-        </listbox>
-        <a iconSclass="z-icon-home" width="120px" style="text-decoration:none" href="/index.zul"/>
-        <a  iconSclass="z-icon-forward" width="120px" style="text-decoration:none" href="/userDetails.zul"/>
-    </groupbox>
+        body {
+        padding: 0;
+        margin: 0;
+        }
 
+        .main-content {
+        flex: 1;
+        padding: 20px;
+        }
+
+        .listbox-item {
+        display: flex;
+        flex-direction: column; /* Change to column to list items vertically */
+        <!--        align-items: center;-->
+        }
+
+        .my-data {
+        display: flex;
+        flex-direction: row;
+        }
+
+        .listbox-item .username-cell {
+        flex: 1; /* Take remaining space */
+        }
+
+        .listbox-item .button-cell {
+        width: 50px; /* Adjust the width as needed */
+        }
+
+        .groupbox-no-border {
+        border: none; /* Remove borders from the groupbox */
+        }
+        element.style {
+        display: ruby;
+        }
+    </style>
+    <include src="sidebar.zul"/>
+    <div sclass="main-content">
+        <groupbox apply="org.zkoss.bind.BindComposer"
+                  viewModel="@id('vm')@init('org.blaiseSolutions.MyViewModel')"
+                  validationMessages="@id('vmsgs')"
+                  style="border:none"
+                  sclass="groupbox-no-border">
+            <div>
+                <listbox model="@load(vm.usersList)" sclass="my-data"
+                         emptyMessage="No users found">
+                    <template name="model">
+                        <listitem sclass="listbox-item" style="display:flex;flex-direction:row">
+                            <listcell class="username-cell" style="display:flex;flex-direction:row">
+                                <label value="@init(each.username)"/>
+                            </listcell>
+                            <listcell class="button-cell">
+                                <button iconSclass="z-icon-info"
+                                        onClick="@command('navigateToUserDetails', selectedUser=each)"/>
+                            </listcell>
+                        </listitem>
+                    </template>
+                </listbox>
+
+            </div>
+        </groupbox>
+    </div>
 </zk>

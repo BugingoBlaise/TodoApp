@@ -1,28 +1,39 @@
-
-#sidebar {
-    width: 200px;
+*{
+    margin: 0;
+    padding: 0;
+}
+.sidebar {
+    position: sticky;
+    width: 300px;
     height: 100%;
     background-color: #333;
     color: white;
-    padding: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column; /* Align items vertically */
 }
-
-#sidebar button {
-    display: block;
+.sidebar a {
     width: 100%;
     padding: 10px;
-    margin-bottom: 10px;
-    text-align: left;
-    color: white;
-    background: none;
-    border: none;
-    cursor: pointer;
+    text-decoration: none;
+    font-size: 25px;
+    /*color: green;*/
+    display: flex;
+    align-items: center; /* Center content vertically within each anchor */
+}
+.z-a:visited {
+    color: cadetblue;
 }
 
-#sidebar button:hover {
+.sidebar a:hover {
     background-color: #555;
 }
 
-#sidebar button i {
+.sidebar a i {
+    color: cadetblue;
     margin-right: 10px;
+}
+.tasks{
+    display: flex;
+    flex-direction: column;
 }

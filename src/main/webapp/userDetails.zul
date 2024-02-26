@@ -1,34 +1,48 @@
-<zk xml:space="default">
-    <groupbox  vflex="1" style="margin:auto"
-            apply="org.zkoss.bind.BindComposer"
-            viewModel="@id('vm')@init('org.blaiseSolutions.MyViewModel')"
-            validationMessages="@id('vmsgs')">
+<?link rel="stylesheet" type="text/css" href="/style.css"?>
+<zk>
+    <style>
+        * {
+        display: flex;
+        flex-direction: row;
+        }
 
-        <caption label="${sessionScope.selectedUser.username}'s Panel"/>
+        body {
+        padding: 0;
+        margin: 0;
+        }
 
-        <div>
-            <button height="37px" href="/index.zul" iconSclass="z-icon-home"/>
-            <button height="37px" href="/usersList.zul" iconSclass="z-icon-backward"/>
-        </div>
+        .main-content {
+        flex: 1;
+        padding: 20px;
+        }
+    </style>
 
-        <label value="Add Task"/>
-        <combobox model="@load(vm.tasksList)" selectedItem="@bind(vm.selectedTask)">
-            <template name="model">
-                <comboitem label="${each.description}" />
-            </template>
-        </combobox>
+    <include src="sidebar.zul"/>
+    <div sclass="main-content">
+        <groupbox apply="org.zkoss.bind.BindComposer"
+                  viewModel="@id('vm')@init('org.blaiseSolutions.MyViewModel')"
+                  validationMessages="@id('vmsgs')">
+            <div sclass="adding-task">
+                <label value="Add Task"/>
+                <combobox model="@load(vm.tasksList)" selectedItem="@bind(vm.selectedTask)">
+                    <template name="model">
+                        <comboitem label="${each.description}"/>
+                    </template>
+                </combobox>
+                <button label="Save Task" iconSclass="z-icon-plus-square" onClick="@command('saveSelectedTask')"/>
+            </div>
+            <div sclass="task-data">
+                <listbox model="@load(vm.filteredTasks)" emptyMessage="No tasks found in the result">
+                    <template name="model">
+                        <listitem>
+                            <listcell>
+                                <label value="@init(each)"/>
+                            </listcell>
+                        </listitem>
+                    </template>
+                </listbox>
+            </div>
 
-        <button label="Save Task"  iconSclass="z-icon-plus-square" onClick="@command('saveSelectedTask')" />
-
-        <listbox model="@load(vm.filteredTasks)" emptyMessage="No tasks found in the result" >
-            <template name="model">
-                <listitem>
-                    <listcell>
-                        <label value="@init(each)" />
-                    </listcell>
-                </listitem>
-            </template>
-        </listbox>
-
-    </groupbox>
+        </groupbox>
+    </div>
 </zk>

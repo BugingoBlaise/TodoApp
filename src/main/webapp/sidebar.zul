@@ -1,40 +1,7 @@
-<!--<?link rel="stylesheet" type="text/css" href="/style.css"?>-->
+<?link rel="stylesheet" type="text/css" href="/style.css"?>
 <zk>
-    <style>
-        #sidebar {
-        width: 100px;
-        height: 100%;
-        background-color: #333;
-        color: white;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        }
-
-        #sidebar button {
-        width: 100%;
-        padding: 10px;
-        text-align: left;
-        color: white;
-        background: none;
-        border: none;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        }
-
-        #sidebar button:hover {
-        background-color: #555;
-        }
-
-        #sidebar button i {
-        margin-right: 10px;
-        }
-    </style>
-
-    <div id="sidebar">
-        <button label="Home" iconSclass="z-icon-home" />
-        <button label="Profile" iconSclass="z-icon-user" />
-        <button label="Settings" iconSclass="z-icon-cog" />
+    <div sclass="sidebar">
+        <a href="/index.zul" class="sidebar-link" iconSclass="z-icon-home">Admin Panel</a>
+        <a href="/usersList.zul" class="sidebar-link" iconSclass="z-icon-user">Users List</a>
     </div>
 </zk>
